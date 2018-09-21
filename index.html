@@ -1,315 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cart</title>
-    <link rel="stylesheet" href="css/jquery.fullpage.css">
-    <link rel="stylesheet" href="css/share.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/three.css">
-    <link rel="stylesheet" href="css/four.css">
-    <style>
-        *{
-            margin:0;
-            padding:0;
-        }
-        .shadow{
-            height:100%;
-            width:100%;
-            background:rgba(0,0,0,0);
-            position:absolute;
-            z-index:1;
-        }
-        canvas {
-			display: block;
-			position:absolute;
-			z-index: 100;
-        }
-        .htmleaf-container{
-            position:absolute;
-            z-index:80;
-        }
-        /* 横向幻灯片导航 */
-        /* .fp-prev{
-            border-color:transparent rgba(184, 168, 127, 0.678) transparent transparent !important;
-        }
-        .fp-prev:hover{
-            border-color:transparent #0f0 transparent transparent !important;
-        }
-        .fp-next{
-            border-color:transparent transparent transparent rgba(184, 168, 127, 0.678) !important;
-        }
-        .fp-next:hover{
-            border-color:transparent transparent transparent #f40 !important;
-        } */
-
-        /* .html
-        eaf-container>.wrap{
-			height:800px;
-			width:1300px;
-			position:absolute;
-			z-index:200;
-			border:1px solid red;
-		} */
-    </style>
+	<meta charset="UTF-8">
+	<title>理想三旬</title>
+	<link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+	<style type="text/css">
+		body{
+			background-color: #7F6C4A;
+			padding-bottom:200px;
+			padding-top:60px;
+		}
+		.box{
+			width:70%;
+			margin:0 auto;
+			text-align:center;
+		}
+		.font{
+			font-size:1.1em;
+			color:pink;
+		}
+		#text{
+			color:white;
+			font-family:Arial,Tahoma,Roboto,Droid Sans,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+		}
+		#text>p:first-child{
+			font-size:1.5em;
+			color:#000;
+			font-weight:bold;
+			text-align:center;
+			margin-left:-6em;
+			margin-bottom:50px;
+		}
+		#line{
+			display:inline-block;
+			height:5px;
+			width:15px;
+			margin-bottom:-5px;
+		}
+		.orange{
+			background-color:orange;
+		}
+		.trans{
+			background-color:transparent;
+		}
+	</style>
 </head>
 <body>
-    <!-- 公用的元素 -->
-    <!-- <a class="go" href="#"><img src="images/00-go.png"></a> -->
-    <!-- <a class="more" href="#"><img src="images/00-more.png"></a> -->
-    <div class="share-top">
-        <div class="top-title">
-            <ul class="top-content">
-                <li>
-                    <a href="#page1">无限月读</a>
-                    <div class="nav-list1 nav-list">
-                        <ul>
-                            <li><a href="#page1">月读</a></li>
-                            <li><a href="#page1">月读</a></li>
-                            <!-- <li><a href="#page1">月读</a></li> -->
-                            <!-- <li><a href="#page1">月读</a></li> -->
-                            <li class="nav-inner-last-li"><a href="#page1">月读</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#page2">蛇叔的试炼</a>
-                    <div class="nav-list2 nav-list">
-                        <ul>
-                            <li><a href="#page2">大蛇丸</a></li>
-                            <!-- <li><a href="#page2">大蛇丸</a></li> -->
-                            <li><a href="#page2">大蛇丸</a></li>
-                            <li><a href="#page2">大蛇丸</a></li>
-                            <li class="nav-inner-last-li"><a href="#page2">大蛇丸</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#page3">忍界大战</a>
-                    <div class="nav-list3 nav-list">
-                        <ul>
-                            <li><a href="#page3">宇智波·斑</a></li>
-                            <li><a href="#page3">八门·凯爷</a></li>
-                            <li><a href="#page3">天征·长门</a></li>
-                            <li><a href="#page3">六道·佐</a></li>
-                            <li class="nav-inner-last-li"><a href="#page3">光环·鸣</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#page4">六道*斑爷</a>
-                    <div class="nav-list4 nav-list">
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li class="nav-inner-last-li"></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#page5">六道*斑爷</a>
-                    <div class="nav-list5 nav-list">
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li class="nav-inner-last-li"></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="top-li-last">
-                    <a href="#page6">六道*斑爷</a>
-                    <div class="nav-list6 nav-list">
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li class="nav-inner-last-li"></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <!-- 全屏切换效果 -->
-    <div id="dowebok" class="container">
-            <!-- 一 -->
-        <div class="section one">
-            <!-- 第一屏飘雪效果 -->
-            <div class="htmleaf-container">
-                <canvas id="canvas"></canvas>
-                <!-- <div class="wrap"></div> -->
-            </div>
-            <div class="shadow"></div>
-            <!-- 第一屏内容 -->
-            <div class="one-content">
-                <div class="one-wrap">
-                    <div class="bill">
-
-                    </div>
-
-                    <div class="video">
-                        <video id="media" src="images/火影忍者.webm" loop="true" preload="metadata"  poster="images/video-bg.jpg" width="700px" height="400px"></video>
-                        <div class="play play-bg1"></div>
-                    </div>
-
-                    <div class="one-right">
-                            <a href="#page2" class="one-right-go1">Let's go</a>
-                            <a href="#page3" class="one-right-go2">Let's go</a>
-                            <a href="#page4" class="one-right-go3">Let's go</a>
-                            <a href="#page5" class="one-right-go4">Let's go</a>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
-            <!-- 二 -->
-        <div class="section">
-            <div class="two-content">
-                <div class="score">分数：0</div>
-                <div class="move"></div>
-                <div class="snake_bg"></div>
-            </div>
-        </div>
-            <!-- 三 -->
-        <div class="section three">
-            <div class="three-content">
-                
-                <div class="thr-photobox">
-                    <div class="thr-big-photo">
-                        <img src="images/big5.jpg" alt="">
-                    </div>
-                    <ul class="thr-photos">
-                        <li class="thr-p1" style="top:0;left:0;"><img draggable="false" data-src="images/li1.jpg" alt=""></li>
-                        <li class="thr-p2" style="left:312px;top:0;"><img draggable="false" data-src="images/li2.jpg" alt=""></li>
-                        <li class="thr-p3" style="left:624px;top:0;"><img draggable="false" data-src="images/li3.jpg" alt=""></li>
-                        <li class="thr-p4" style="left:0;top:212px;"><img  draggable="false" data-src="images/li4.jpg" alt=""></li>
-                        <li class="thr-p5" style="left:312px;top:212px;"><img draggable="false" data-src="images/li5.jpg" alt=""></li>
-                        <li class="thr-p6" style="left:624px;top:212px;"><img draggable="false" data-src="images/li6.jpg" alt=""></li>
-                        <li class="thr-p7" style="left:0;top:424px;"><img draggable="false" data-src="images/li7.jpg" alt=""></li>
-                        <li class="thr-p8" style="left:312px;top:424px;"><img draggable="false" data-src="images/li8.jpg" alt=""></li>
-                        <li class="thr-p9" style="left:624px;top:424px;"><img draggable="false" data-src="images/li9.jpg" alt=""></li>
-                    </ul>
-                </div>
-                <div class="thr-shopping">
-                    <div class="shop-cart">
-                        <div class="goods">
-                            <div class="price">￥1万</div>
-                        </div>
-                        <div class="goods">
-                            <div class="price"></div>
-                        </div>
-                        <div class="goods">
-                            <div class="price"></div>
-                        </div>
-                        <div class="goods">
-                            <div class="price"></div>
-                        </div>
-                        <div class="goods">
-                            <div class="price"></div>
-                        </div>
-                        <div class="buynow">
-                            <span class="on-buy">Buy Now</span>
-                            <span class="explain"></span>
-                        </div>
-                        <div class="explains">拖动左侧商品到购物车点击购买</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- 四 -->
-        <div class="section">
-            <div class="four-content">
-                <div class="four-wrap">
-                    <div class="four-nav">
-                        <ul class="four-nav-ul">
-                            <li class="four-nav-select four-nav1"><span>立即登录</span></li>
-                            <li class="four-nav-select four-nav2">立即充钱</li>
-                            <li class="four-nav-select four-nav3">3</li>
-                            <li class="four-nav-select four-nav4">4</li>
-                            <li class="four-nav-select four-last-select">5</li>
-                        </ul>
-                    </div>
-                    <div class="four-information">
-                        <div class="userinfo" style="display:none;">
-                            <div class="userinfo-centent">
-                                <div class="myinfo">
-                                    <div class="usertit">
-                                        <div class="user-face-box"></div>
-                                        <div class="user-faceinfo">
-                                            <span class="username">漂泊十年</span>
-                                            <span class="userid">123456</span>
-                                            <span class="usergrade">★</span>
-                                            <span class="usersay">狼烟风沙口</span>
-                                        </div>
-                                    </div>
-                                    <div class="usermoney">
-
-                                    </div>
-                                </div>
-                                <div class="mygoods">
-
-                                </div>
-                                <div class="myprivilege">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="four-goods-wrap">
-                            <div class="four-goods-title">
-                                <ul>
-                                    <li class="goods-bar1">新品上架</li>
-                                    <li class="goods-bar2">热门推荐</li>
-                                </ul>
-                            </div> 
-                            <div class="four-dl-goods">
-                                <dl>
-                                    <dt></dt>
-                                    <dd></dd>
-                                </dl>
-                                <dl>
-                                    <dt></dt>
-                                    <dd></dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- 五 -->
-        <div class="section"></div>
-            <!-- 六 -->
-        <div class="section"></div>
-    </div>
-
-    <script>
-        window.shareinfo = {
-            userinfo: {
-                id: 0,
-                name: "",
-                phoneCall: 0,
-                money: 0,
-                resource: []
-            },
-            price: [3, 5, 3, 8, 50, 12, 8, 5, 20]
+	<div class="box">
+		<div id="text">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var rain = ['理想三旬__','雨后有车驶来', '驶过暮色苍白', '旧铁皮往南开 恋人已不在', '收听浓烟下的', '诗歌电台', '不动情的咳嗽 至少看起来', '归途也还可爱', '琴弦少了姿态', '再不见那夜里', '听歌的小孩', '时光匆匆独白', '将颠沛磨成卡带', '已枯卷的情怀', '踏碎成年代', '就老去吧 孤独别醒来', '你渴望的离开', '只是无处停摆', '就歌唱吧 眼睛眯起来', '而热泪的崩坏', '只是没抵达的存在', '青春又醉倒在', '籍籍无名的怀', '靠嬉笑来虚度', '聚散得慷慨', '辗转却去不到', '对的站台', '如果漂泊是成长', '必经的路牌', '你迷醒岁月中', '那贫瘠的未来', '像遗憾季节里', '未结果的爱', '弄脏了每一页诗', '吻最疼痛的告白', '而风声吹到这', '已不需要释怀', '就老去吧 孤独别醒来', '你渴望的离开', '只是无处停摆', '就歌唱吧 眼睛眯起来', '而热泪的崩坏', '只是没抵达的存在', '就甜蜜地忍耐', '繁星润湿窗台', '光影跳动着像在', '困倦里说爱', '再无谓的感慨', '以为明白', '梦倒塌的地方', '今已爬满青苔'];
+		var linep = {};
+		// 字体增加函数
+		var fun = (function () {
+			var i = 1;
+			var j = 0;
+			var arrlen = rain.length;
+			function indent() {
+				linep[j].className = 'font';
+				linep[j].innerHTML = rain[j].substring(0, i) + '<span class="orange" id="line"></span>';
+				i++;
+				// 一行结束
+				if (i > rain[j].length) {
+					linep[j].innerHTML = rain[j];
+					linep[j].className = '';
+					window.scrollTo(0,document.body.scrollHeight);
+					i = 0;
+					j++;
+					// 数组打印结束
+					if (j >= arrlen) {
+						linep[j-1].innerHTML = rain[j-1] + '<span class="orange" id="line"></span>';
+						stop();
+						var stime = window.setInterval((function () {
+							var top = document.documentElement.scrollTop;
+							function slide() {
+								window.scrollTo(0, top);
+								top -= 2;
+								if (top < 0) {
+									window.clearInterval(stime);
+								}
+							}
+							return slide;
+						}()),2);
+					}
+				}
+			}
+			return indent;
+		}());
+		var time = 0;
+		var timef = 0;
+		var flash = function (ele, boo) {
+			if (boo) {
+				timef = window.setInterval((function () {
+					var i = 0;
+					function f() {
+						if (ele) {
+							ele.className = i % 2 === 0 ? 'trans' : 'orange';
+							i++;
+						}
+					}
+					return f;
+				}()), 500);
+			}else {
+				window.clearInterval(timef);
+			}
+		}
+		function stop() {
+			window.clearInterval(time);
+			flash(document.getElementById('line'), true);
+		}
+		function start() {
+			time = window.setInterval(fun, 200);
+		}
+		
+		function isPC() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                return false;
+            } else {
+                return true;
+            }
         }
-    </script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.fullpage.js"></script>
-    <script src="js/snow.js"></script>
-    <script src="js/snake.js"></script>
-    <script src="js/index2.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/three.js"></script>
-    <script src="js/four.js"></script>
+		function init(){
+			var tagp = '';
+			var text = document.getElementById('text');
+			if (isPC()) {
+				text.style.fontSize = '22px';
+				document.documentElement.style.overflowY = 'hidden';
+			}else {
+				text.style.fontSize = '40px';
+			}
+			for (var i = 0, len = rain.length; i < len; i++) {
+				tagp += '<p></p>';
+			}
+			text.innerHTML = tagp;
+			linep = text.getElementsByTagName('p');
+			start();
+		}
+		init();
+		window.setTimeout(stop, 6000);
+		window.setTimeout(start, 8000);
+		window.setTimeout(stop, 26000);
+		window.setTimeout(start, 28000);
+		window.setTimeout(stop, 33000);
+		window.setTimeout(start, 35000);
+		// 滑轮滚动事件
+		document.onmousewheel = function (e) {
+			var scrollTop = document.documentElement.scrollTop;
+			var e = e ||window.event;
+			if (e.deltaY > 0) {
+				window.scrollTo(0, document.documentElement.scrollTop + 100);
+			}else {
+				window.scrollTo(0, document.documentElement.scrollTop - 100);
+			}
+		}
+	</script>
 </body>
 </html>
