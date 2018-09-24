@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三旬-凉凉</title>
+	<link rel="icon" href="public/favicon.ico" mce_href="public/favicon.ico" type="image/x-icon">
+	<style type="text/css">
+		body{
+			background-color: #7F6C4A;
+			padding-bottom:200px;
+			padding-top:60px;
+		}
+		.box{
+			width:70%;
+			margin:0 auto;
+			text-align:center;
+		}
+		.font{
+			font-size:1.1em;
+			color:pink;
+		}
+		#text{
+			color:white;
+			font-family:Arial,Tahoma,Roboto,Droid Sans,Helvetica Neue,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self;
+		}
+		#text>p:first-child{
+			font-size:1.5em;
+			color:#000;
+			font-weight:bold;
+			text-align:center;
+			margin-left:-6em;
+			margin-bottom:50px;
+		}
+		#line{
+			display:inline-block;
+			height:5px;
+			width:0.7em;
+			margin-bottom:-5px;
+		}
+		.orange{
+			background-color:orange;
+		}
+		.trans{
+			background-color:transparent;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="text">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var rain2 = [' 三旬__ ','雨后有车驶来', '驶过暮色苍白', '旧铁皮往南开 恋人已不在', '收听浓烟下的', '诗歌电台', '不动情的咳嗽 至少看起来', '归途也还可爱', '琴弦少了姿态', '再不见那夜里', '听歌的小孩', '时光匆匆独白', '将颠沛磨成卡带', '已枯卷的情怀', '踏碎成年代', '就老去吧 孤独别醒来', '你渴望的离开', '只是无处停摆', '就歌唱吧 眼睛眯起来', '而热泪的崩坏', '只是没抵达的存在', '青春又醉倒在', '籍籍无名的怀', '靠嬉笑来虚度', '聚散得慷慨', '辗转却去不到', '对的站台', '如果漂泊是成长', '必经的路牌', '你迷醒岁月中', '那贫瘠的未来', '像遗憾季节里', '未结果的爱', '弄脏了每一页诗', '吻最疼痛的告白', '而风声吹到这', '已不需要释怀', '就老去吧 孤独别醒来', '你渴望的离开', '只是无处停摆', '就歌唱吧 眼睛眯起来', '而热泪的崩坏', '只是没抵达的存在', '就甜蜜地忍耐', '繁星润湿窗台', '光影跳动着像在', '困倦里说爱', '再无谓的感慨', '以为明白', '梦倒塌的地方', '今已爬满青苔'];
+		var rain = ['凉凉__','入夜渐微凉\ 繁花落地成霜','你在远方眺望\ 耗尽所有暮光','不思量 自难相忘','夭夭桃花凉 前世你怎舍下','这一海心茫茫 还故作不痛不痒不牵强','都是假象','凉凉夜色 为你思念成河','化作春泥 呵护着我','浅浅岁月 拂满爱人袖','片片芳菲 入水流','凉凉天意 潋滟一身花色','落入凡尘 伤情着我','生劫易渡 情劫难了','折旧的心 还有几分前生的恨','还有几分前生的恨','也曾鬓微霜 也曾因你回光','悠悠岁月漫长 怎能浪费时光','去流浪（去流浪）去换成长','灼灼桃花凉 今生愈渐滚烫','一朵已放心上 足够三生三世背影成双（背影成双）','在水一方','凉凉夜色 为你思念成河','化作春泥 呵护着我','浅浅岁月 拂满爱人袖','片片芳菲 入水流','凉凉天意 潋滟一身花色','落入凡尘 伤情着我','生劫易渡 情劫难了','折旧的心 还有几分前生的恨','凉凉三生三世 恍然如梦','须臾的年 风干泪痕','若是回忆不能再相认','就让情分 落九尘','凉凉十里 何时还会春盛','又见树下 一盏风存','落花有意 流水无情','别让恩怨爱恨 凉透那花的纯','吾生愿 牵尘'];
+
+		var linep = {};
+		// 字体增加函数
+		var fun = (function () {
+			var i = 1;
+			var j = 0;
+			var arrlen = rain.length;
+			function indent() {
+				linep[j].className = 'font';
+				linep[j].innerHTML = rain[j].substring(0, i) + '<span class="orange" id="line"></span>';
+				i++;
+				// 一行结束
+				if (i > rain[j].length) {
+					linep[j].innerHTML = rain[j];
+					linep[j].className = '';
+					window.scrollTo(0,document.body.scrollHeight);
+					i = 0;
+					j++;
+					// 数组打印结束
+					if (j >= arrlen) {
+						linep[j-1].innerHTML = rain[j-1] + '<span class="orange" id="line"></span>';
+						stop();
+						document.getElementById('text').style.transform = 'rotateZ(-2deg)';
+						var stime = window.setInterval((function () {
+							var top = document.documentElement.scrollTop;
+							function slide() {
+								window.scrollTo(0, top);
+								top -= 2;
+								if (top < 0) {
+									window.clearInterval(stime);
+								}
+							}
+							return slide;
+						}()),2);
+					}
+				}
+			}
+			return indent;
+		}());
+		var time = 0;
+		var timef = 0;
+		var flash = function (ele, boo) {
+			if (boo) {
+				timef = window.setInterval((function () {
+					var i = 0;
+					function f() {
+						if (ele) {
+							ele.className = i % 2 === 0 ? 'trans' : 'orange';
+							i++;
+						}
+					}
+					return f;
+				}()), 500);
+			}else {
+				window.clearInterval(timef);
+			}
+		}
+		function stop() {
+			window.clearInterval(time);
+			flash(document.getElementById('line'), true);
+		}
+		function start() {
+			time = window.setInterval(fun, 200);
+		}
+		
+		function isPC() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function timeout1() {
+        	window.setTimeout(stop, 6000);
+			window.setTimeout(start, 8000);
+			window.setTimeout(stop, 26000);
+			window.setTimeout(start, 28000);
+			window.setTimeout(stop, 33000);
+			window.setTimeout(start, 35000);
+        }
+        function timeout2() {
+        	window.setTimeout(stop, 7000);
+			window.setTimeout(start, 9000);
+			window.setTimeout(stop, 26000);
+			window.setTimeout(start, 28000);
+			window.setTimeout(stop, 34000);
+			window.setTimeout(start, 37000);
+        }
+		function init(){
+			var tagp = '';
+			var text = document.getElementById('text');
+			if (isPC()) {
+				text.style.fontSize = '22px';
+				document.documentElement.style.overflowY = 'hidden';
+			}else {
+				text.style.fontSize = '40px';
+			}
+			for (var i = 0, len = rain.length; i < len; i++) {
+				tagp += '<p></p>';
+			}
+			text.innerHTML = tagp;
+			linep = text.getElementsByTagName('p');
+			start();
+        	timeout2();
+		}
+		init();
+		
+		// 滑轮滚动事件
+		document.onmousewheel = function (e) {
+			var scrollTop = document.documentElement.scrollTop;
+			var e = e ||window.event;
+			if (e.deltaY > 0) {
+				window.scrollTo(0, document.documentElement.scrollTop + 100);
+			}else {
+				window.scrollTo(0, document.documentElement.scrollTop - 100);
+			}
+		}
+	</script>
+</body>
+</html>
