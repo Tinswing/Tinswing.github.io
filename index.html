@@ -11,6 +11,12 @@
 			padding:0;
 			background-color:#8ac060;
 		}
+		.bodybg0{
+			background-color:#8AC060;
+		}
+		.bodybg1{
+			background:#4c4c4c;
+		}
 		.content{
 		    /*width:1121px;
 		    height:600px;*/
@@ -104,6 +110,12 @@
 		    position:absolute;
 		    z-index:800;
 		}
+		.bodybg0 .body{
+			background:rgb(82, 71, 68);
+		}
+		.bodybg1 .body{
+			background:#7c7c7c;
+		}
 		.btns{
 			width:750px;
 			height:500px;
@@ -177,11 +189,32 @@
 			border-left:62.5px solid transparent;
 			border-right:62.5px solid transparent;
 		}
+		.footer{
+			position: absolute;
+			bottom:-50px;
+			right:30px;
+		}
+		.footer>a{
+			color:#fff;
+			display: block;
+		}
+		.changebg{
+			color:#fff;
+			position: absolute;
+			bottom:-50px;
+			left:30px;
+			font-size:1.2em;
+			cursor:pointer;
+		}
 	</style>
 </head>
 <body>
     <div class="content">
         <div class="score">分数：0</div>
+        <div class="footer">
+        	<a href="https://heting.vip/views/liangliang.html">get凉凉</a>
+        </div>
+        <div class="changebg">点点换背景</div>
         <div class="move"></div>
         <div class="snake_bg"></div>
     </div>
@@ -200,5 +233,16 @@
     	</div>
     </div>
 	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		var changebg = (function () {
+			var body = window.document.getElementsByTagName('body')[0];
+			var i = 1;
+			return function () {
+				body.className = 'bodybg' + (i % 2);
+				i++;
+			}
+		}());
+		window.document.getElementsByClassName('changebg')[0].onclick = changebg;
+	</script>
 </body>
 </html>
